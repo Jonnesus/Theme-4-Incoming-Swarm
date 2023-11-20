@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(InputManager))]
+
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Transform orientation;
+    [SerializeField] private Transform cameraOrientation;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed;
@@ -31,11 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float startYScale;
 
-    [Header("Keybinds")]
-    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
-    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
-    [SerializeField] private KeyCode crouchKey = KeyCode.C;
-
     [Header("Ground Check")]
     [SerializeField] private float playerHeight;
     [SerializeField] private Transform groundCheck;
@@ -48,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private bool exitingSlope;
     private bool enableMovementOnNextTouch;
 
-    private float horizontalInput;
-    private float verticalInput;
+    private InputManager IM;
 
     private RaycastHit slopeHit;
 
@@ -71,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        IM = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -108,11 +105,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
         //Allows the player to jump when key is pressed, on ground and cooldown timer is off
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (IM.jump && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -122,16 +116,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Allows the player to crouch when key is pressed
-        if (Input.GetKeyDown(crouchKey))
+        if (IM.crouch)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            rb.mass = 5;
         }
 
         //Stops crouching when key is released
-        if (Input.GetKeyUp(crouchKey))
+        if (IM.crouch == false)
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            rb.mass = 1;
         }
     }
 
@@ -160,14 +155,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Handles movemment speed while crouching
-        else if (Input.GetKey(crouchKey))
+        else if (IM.crouch)
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
         }
 
         //Handles movemment speed while sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && IM.sprint)
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -231,7 +226,8 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         //Calculates movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = cameraOrientation.forward * IM.move.y + cameraOrientation.right * IM.move.x;
+        moveDirection.y = 0f;
 
         //Movement whilst on a slope
         if (OnSlope() && !exitingSlope)
