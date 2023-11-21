@@ -455,7 +455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: Theme 4 - The Incoming Swarm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1947,7 +1947,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Controls Text
+  m_text: 'Movement: WASD/Arrow Keys (KBM), Left Stick (Controller)
+
+
+    Sprint:
+    Left Shift (KBM), West Button (Controller)
+
+
+    Crouch: Left Control (KBM),
+    North Button (Controller)
+
+
+    Jump: Spacebar (KBM), South Button (Controller)
+
+
+    Shoot:
+    Left Click (KBM), Right Trigger (Controller)
+
+
+    Camera: Mouse (KBM), Right
+    Stick (Controller)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
