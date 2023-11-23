@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.089814365, g: 0.07298092, b: 0.14566469, a: 1}
+  m_IndirectSpecularColor: {r: 0.08970449, g: 0.07287143, b: 0.14554983, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1048,7 +1048,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: ae29ac02d08992344b9095971167e1c6, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1556,6 +1556,7 @@ GameObject:
   - component: {fileID: 2128647421}
   - component: {fileID: 2128647423}
   - component: {fileID: 2128647424}
+  - component: {fileID: 2128647425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1689,6 +1690,22 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   crouch: 0
+--- !u!114 &2128647425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128647416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1612c1b17380d7842a7c2186a34b838e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  shootDelay: 0.5
+  range: 100
+  fpsCam: {fileID: 963194227}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
