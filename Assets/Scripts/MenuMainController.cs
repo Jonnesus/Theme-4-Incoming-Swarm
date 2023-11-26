@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class MenuMainController : MonoBehaviour
 {
     [SerializeField] string menuScene = "StartScene";
     [SerializeField] string playScene = "Overworld";
@@ -10,12 +10,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] GameObject optionsMenuPanel;
     [SerializeField] GameObject optionsCloseButton;
     [SerializeField] GameObject optionsOpenButton;
-
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
 
     public void OptionsMenuClose()
     {

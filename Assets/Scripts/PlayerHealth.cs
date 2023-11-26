@@ -1,18 +1,19 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health;
+    public int health;
+    public bool playerAlive = true;
+
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private GameObject inGameMenuPanel;
+    [SerializeField] private GameObject deathMenuPanel;
+    [SerializeField] private GameObject restartButton;
 
     private void Start()
     {
         health = maxHealth;
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void TakeDamage(int damage)
@@ -21,6 +22,10 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Player Dead");
+            playerAlive = false;
+            inGameMenuPanel.SetActive(false);
+            deathMenuPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(restartButton);
             Time.timeScale = 0;
         }
     }
