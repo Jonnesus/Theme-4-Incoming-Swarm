@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class EnemyTakeDamage : MonoBehaviour
 {
     [SerializeField] private float health = 50f;
 
