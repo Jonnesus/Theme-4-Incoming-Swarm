@@ -27,7 +27,7 @@
                     "name": "Fire",
                     "type": "Value",
                     "id": "880827ec-a0fb-4f10-b411-68323d2f4a1d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

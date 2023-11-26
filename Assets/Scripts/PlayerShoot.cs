@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        if (IM.fire && Time.time >= nextFire)
+        if (IM.fire == true && Time.time >= nextFire)
         {
             nextFire = Time.time + 1f / fireRate;
             Shoot();
