@@ -19,6 +19,5 @@ public class MenuDeathController : MonoBehaviour
     {
         deathMenuPanel.SetActive(false);
         SceneManager.LoadScene(menuScene);
-        SceneManager.UnloadSceneAsync(playScene);
     }
 }

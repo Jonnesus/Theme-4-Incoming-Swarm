@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
             inGameMenuPanel.SetActive(false);
             deathMenuPanel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(restartButton);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
     }
