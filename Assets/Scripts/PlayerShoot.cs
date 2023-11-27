@@ -7,7 +7,6 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float damage = 10f;
     [SerializeField] private float fireRate = 15f;
     [SerializeField] private float range = 100f;
-    [SerializeField] private float impactForce = 30f;
 
     private float nextFire = 0f;
 
@@ -42,11 +41,6 @@ public class PlayerShoot : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
-            }
-
-            if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForceAtPosition(impactForce * transform.forward, hit.point);
             }
         }
     }

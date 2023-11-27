@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuMainController : MonoBehaviour
 {
-    [SerializeField] string menuScene = "StartScene";
     [SerializeField] string playScene = "Overworld";
 
     [SerializeField] GameObject optionsMenuPanel;
@@ -27,7 +26,6 @@ public class MenuMainController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(playScene);
-        SceneManager.UnloadSceneAsync(menuScene);
     }
 
     public void QuitGame()
